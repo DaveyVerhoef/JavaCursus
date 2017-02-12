@@ -6,4 +6,3 @@ git checkout master
 git merge <branchname>
 git branch -d <branchname> (delete branch)
 git push origin master
-gelukt?
