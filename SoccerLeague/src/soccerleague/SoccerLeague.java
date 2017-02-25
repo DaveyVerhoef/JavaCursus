@@ -1,5 +1,7 @@
 package soccerleague;
 
+import java.util.Scanner;
+
 public class SoccerLeague {
 
     public static void main(String[] args) {
@@ -9,15 +11,15 @@ public class SoccerLeague {
         Team team2 = new Team();
         team1.name = "Arsenal";
         team2.name = "Chelsea";
-        team1.player1.name = "Welbz";
-        team1.player2.name = "Alexis";
-        team1.player3.name = "Özil";
+        team1.player1.name = "DatGuy Welbz";
+        team1.player2.name = "Alexis Sanchez";
+        team1.player3.name = "Mesut Özil";
         team1.players[0] = team1.player1.name;
         team1.players[1] = team1.player2.name;
         team1.players[2] = team1.player3.name;
-        team2.player1.name = "Shit1";
-        team2.player2.name = "Shit2";
-        team2.player3.name = "Shit3";
+        team2.player1.name = "Fucking Shit1";
+        team2.player2.name = "Fucking Shit2";
+        team2.player3.name = "Fucking Shit3";
         team2.players[0] = team2.player1.name;
         team2.players[1] = team2.player2.name;
         team2.players[2] = team2.player3.name;        
@@ -66,6 +68,38 @@ public class SoccerLeague {
             }
         }
         
-    }
+        System.out.println("Who are you looking for?");
+        Scanner reader = new Scanner(System.in);
+        String input = reader.next();
+        
+        for (String player : game1.homeTeam.players) {
+            if (player != null && player.toLowerCase().contains(input))
+                System.out.println(player);
+        }
+        
+        for (String player : game1.awayTeam.players) {
+            if (player != null && player.toLowerCase().contains(input))
+                System.out.println(player);
+        }
+        
+        System.out.println("");
+        System.out.println("Different order:");
+        
+        int space = 0;
+        for (String player : game1.homeTeam.players) {
+            if (player != null) {
+                space = player.indexOf(" ");
+                System.out.println(player.substring(space) + ", " + player.substring(0, space));
+            }
+        }
+        
+        for (String player : game1.awayTeam.players) {
+            if (player != null) {
+                space = player.indexOf(" ");
+                System.out.println(player.substring(space) + ", " + player.substring(0, space));
+            }
+        }
+        
+    } // main
     
-}
+} // SoccerLeague
