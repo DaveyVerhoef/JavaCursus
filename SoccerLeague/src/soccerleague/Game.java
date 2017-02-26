@@ -1,7 +1,19 @@
 package soccerleague;
 
+import utility.*;
+
 public class Game {
-    Team homeTeam = new Team();
-    Team awayTeam = new Team();
-    Goal[] goals = new Goal[100];
+    public Team homeTeam = new Team();
+    public Team awayTeam = new Team();
+    public Goal[] goals;
+    
+    public void playGame(int maxGoals) {
+        int randomNum = (int)(Math.random()*(maxGoals+1));
+        goals = new Goal[randomNum];
+        GameUtils.addGameGoals(this);
+    }
+    
+    public void playGame() {
+        this.playGame(6);
+    }
 }

@@ -1,7 +1,7 @@
 package soccerleague;
 
 public class Goal {
-    Team teamName = new Team();
-    Player playerName = new Player();
-    double timeScored;
+    public Team teamName = new Team();
+    public Player playerName = new Player();
+    public double timeScored;
 }

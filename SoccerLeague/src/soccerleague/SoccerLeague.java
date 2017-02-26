@@ -1,105 +1,42 @@
 package soccerleague;
 
-import java.util.Scanner;
-
 public class SoccerLeague {
+    public static Team[] teams = new Team[10];
+    public static Game[] games = new Game[100];
+    
+    static void createTeams() {
+        Team team1 = new Team("Arsenal", "DatGuy Welbz", "Alexis Sanchez", "Mesut Özil");
+        Team team2 = new Team("Chelsea", "Fucking Shit1", "Fucking Shit2", "Fucking Shit3");
+        
+        teams[0] = team1;
+        teams[1] = team2;
+    }
+    
+    static void createGames(Team[] teams) {
+        Game game1 = new Game();
+        game1.homeTeam = teams[0];
+        game1.awayTeam = teams[1];
+        games[0] = game1;
+    }
+    
+    static void printGoals() {
+        for (Goal goals : games[0].goals) {
+            if (goals != null) {
+                double timeScored = goals.timeScored;
+                String playerName = goals.playerName.name;
+                String teamName = goals.teamName.name;
+                System.out.println("Goal scored after " + timeScored + " mins by " + playerName + " of " + teamName);
+            }
+        }
+    }
 
     public static void main(String[] args) {
-        int i = 0;
         
-        Team team1 = new Team();
-        Team team2 = new Team();
-        team1.name = "Arsenal";
-        team2.name = "Chelsea";
-        team1.player1.name = "DatGuy Welbz";
-        team1.player2.name = "Alexis Sanchez";
-        team1.player3.name = "Mesut Özil";
-        team1.players[0] = team1.player1.name;
-        team1.players[1] = team1.player2.name;
-        team1.players[2] = team1.player3.name;
-        team2.player1.name = "Fucking Shit1";
-        team2.player2.name = "Fucking Shit2";
-        team2.player3.name = "Fucking Shit3";
-        team2.players[0] = team2.player1.name;
-        team2.players[1] = team2.player2.name;
-        team2.players[2] = team2.player3.name;        
-        
-        Game game1 = new Game();
-        game1.homeTeam = team1;
-        game1.awayTeam = team2;
-        
-        Goal goal1 = new Goal();
-        game1.goals[i] = goal1;
-        game1.goals[i].playerName.name = "Welbz";
-        game1.goals[i].teamName.name = "Arsenal";
-        game1.goals[i].timeScored = 05.55;
-        i++;
-        Goal goal2 = new Goal();
-        game1.goals[i] = goal2;
-        game1.goals[i].playerName.name = "Welbz";
-        game1.goals[i].teamName.name = "Arsenal";
-        game1.goals[i].timeScored = 15.55;
-        i++;
-        Goal goal3 = new Goal();
-        game1.goals[i] = goal3;
-        game1.goals[i].playerName.name = "Welbz";
-        game1.goals[i].teamName.name = "Arsenal";
-        game1.goals[i].timeScored = 25.55;
-        i++;
-        
-        System.out.println(game1.homeTeam.name + ":");
-        for (String player : game1.homeTeam.players) {
-            if (player != null)
-                System.out.println(player);
-        }
-        System.out.println();
-        System.out.println(game1.awayTeam.name + ":");
-        for (String player : game1.awayTeam.players) {
-            if (player != null)
-                System.out.println(player);
-        }
-        System.out.println();
-        System.out.println("Goals:");
-        
-        for (Goal goal : game1.goals) {
-            if (goal != null) {
-                System.out.println("Goal scored after " + goal.timeScored + " mins by "
-                + goal.playerName.name + " of " + goal.teamName.name);
-            }
-        }
-        
-        System.out.println("Who are you looking for?");
-        Scanner reader = new Scanner(System.in);
-        String input = reader.next();
-        
-        for (String player : game1.homeTeam.players) {
-            if (player != null && player.toLowerCase().contains(input))
-                System.out.println(player);
-        }
-        
-        for (String player : game1.awayTeam.players) {
-            if (player != null && player.toLowerCase().contains(input))
-                System.out.println(player);
-        }
-        
-        System.out.println("");
-        System.out.println("Different order:");
-        
-        int space = 0;
-        for (String player : game1.homeTeam.players) {
-            if (player != null) {
-                space = player.indexOf(" ");
-                System.out.println(player.substring(space) + ", " + player.substring(0, space));
-            }
-        }
-        
-        for (String player : game1.awayTeam.players) {
-            if (player != null) {
-                space = player.indexOf(" ");
-                System.out.println(player.substring(space) + ", " + player.substring(0, space));
-            }
-        }
-        
+        createTeams();
+        createGames(teams);
+        games[0].playGame();
+        printGoals();
+       
     } // main
     
 } // SoccerLeague
